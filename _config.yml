@@ -5,7 +5,7 @@ author:      "Thomas Williams"
 description: "thwllms' personal blog."
 baseurl:     ""
 url:         "http://thwllms.github.io"
-images:      "http://raw.githubusercontent.com/thwllms/blog/gh-pages/images"
+images:      "https://raw.githubusercontent.com/thwllms/thwllms.github.io/master/images"
 
 # Google analytics
 google_analytics: 
