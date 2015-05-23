@@ -3,8 +3,8 @@
   <channel>
     <title>thwllms</title>
     <description>thwllms&#39; personal blog.</description>
-    <link>http://thwllms.github.io/</link>
-    <atom:link href="http://thwllms.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://www.thwllms.com/</link>
+    <atom:link href="http://www.thwllms.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Countour Confusion</title>
@@ -21,8 +21,8 @@
 &lt;p&gt;Save the contours for your maps. Build a DEM from the raw data for actual analysis.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
-        <link>http://thwllms.github.io/gis/2015/05/18/contours/</link>
-        <guid isPermaLink="true">http://thwllms.github.io/gis/2015/05/18/contours/</guid>
+        <link>http://www.thwllms.com/gis/2015/05/18/contours/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/gis/2015/05/18/contours/</guid>
       </item>
     
       <item>
@@ -41,8 +41,8 @@
 &lt;p&gt;So&amp;hellip; maybe check back later. &lt;/p&gt;
 </description>
         <pubDate>Sat, 16 May 2015 21:00:00 -0400</pubDate>
-        <link>http://thwllms.github.io/init/2015/05/16/first-post/</link>
-        <guid isPermaLink="true">http://thwllms.github.io/init/2015/05/16/first-post/</guid>
+        <link>http://www.thwllms.com/init/2015/05/16/first-post/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/init/2015/05/16/first-post/</guid>
       </item>
     
   </channel>
