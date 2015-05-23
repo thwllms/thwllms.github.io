@@ -4,7 +4,7 @@ email:       thwllms@gmail.com
 author:      "Thomas Williams"
 description: "thwllms' personal blog."
 baseurl:     ""
-url:         "http://.thwllms.github.io"
+url:         "http://thwllms.github.io"
 images:      "http://raw.githubusercontent.com/thwllms/blog/gh-pages/images"
 
 # Google analytics
