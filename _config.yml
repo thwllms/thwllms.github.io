@@ -3,7 +3,7 @@ title:       thwllms
 email:       thwllms@gmail.com
 author:      "Thomas Williams"
 description: "thwllms' personal blog."
-baseurl:     "/"
+baseurl:     ""
 url:         "http://www.thwllms.com"
 images:      "http://raw.githubusercontent.com/thwllms/blog/gh-pages/images"
 
