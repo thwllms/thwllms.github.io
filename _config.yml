@@ -8,7 +8,7 @@ url:         "http://www.thwllms.com"
 images:      "https://raw.githubusercontent.com/thwllms/thwllms.github.io/master/images"
 
 # Google analytics
-google_analytics: 
+google_analytics: 'UA-63345418-1'
 
 # Optional features
 animated:           false
