@@ -3,7 +3,7 @@ layout:     post
 title:      Countour Confusion
 date:       2015-05-18 13:16:00
 summary:    Great for maps. Less great for real analysis.
-categories: GIS
+categories: blog
 ---
 
 This is something I run into a lot in the engineering/GIS world - a misunderstanding of contour data.
