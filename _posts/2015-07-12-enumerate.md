@@ -28,7 +28,7 @@ However, you can do the same thing a little more gracefully with `enumerate`:
 ...     print index, item
 {% endhighlight %}
 
-`iteritems` works similarly, but with dictionaries. If you were doing this...
+`iteritems` is similar to `enumerate`, but for dictionaries. If you were doing this...
 
 {% highlight python %}
 >>> my_dict = {0:'a', 1:'b', 2:'c'}
