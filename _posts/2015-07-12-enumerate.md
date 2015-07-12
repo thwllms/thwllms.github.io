@@ -21,7 +21,7 @@ Let's say you want to loop through a list, but you want to access both the list 
 2 c
 {% endhighlight %}
 
-`enumerate` makes this a little bit cleaner:
+However, you can do the same thing a little more gracefully with `enumerate`:
 
 {% highlight python %}
 >>> for index, item in enumerate(my_list):

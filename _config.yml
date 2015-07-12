@@ -5,7 +5,6 @@ author:      "Thomas Williams"
 description: "thwllms' personal blog."
 baseurl:     ""
 url:         "http://www.thwllms.com"
-#images:      "https://raw.githubusercontent.com/thwllms/thwllms.github.io/master/images"
 images: "/images"
 
 # Google analytics
@@ -26,7 +25,7 @@ github_username: 'thwllms'
 stackoverflow_id:
 twitter_username: 'thwllms'
 google_plus_id:
-linkedin_username:
+linkedin_username: 'thwllms'
 angellist_username:
 bitcoin_url:
 paypal_url:
@@ -39,7 +38,7 @@ share_text: 'Share this post!'
 share_facebook: false
 share_twitter: false
 share_googleplus: false
-share_linkedin: false
+share_linkedin: true
 share_digg: false
 share_tumblr: false
 share_reddit: false
