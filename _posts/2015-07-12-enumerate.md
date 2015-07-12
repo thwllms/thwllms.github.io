@@ -21,14 +21,14 @@ Let's say you want to loop through a list, but you want to access both the list 
 2 c
 {% endhighlight %}
 
-`enumerate` makes this a little bit cleaner:
+But you can do the same thing a little more gracefully with `enumerate`:
 
 {% highlight python %}
 >>> for index, item in enumerate(my_list):
 ...     print index, item
 {% endhighlight %}
 
-`iteritems` works similarly, but with dictionaries. If you were doing this...
+`iteritems` is similar to `enumerate`, but for dictionaries. If you were doing this...
 
 {% highlight python %}
 >>> my_dict = {0:'a', 1:'b', 2:'c'}
