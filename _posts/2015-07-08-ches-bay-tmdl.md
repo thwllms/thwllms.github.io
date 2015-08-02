@@ -67,15 +67,15 @@ Measuing pollution concentrations is also easier said than done. Engineers and s
 
 Getting back to our TMDL computer model, we use landuse, soils, and rainfall data to build a hydrologic simulation of our watershed. Then - *if it's even available* - we use real-world flow data and water quality data to calibrate our model. 
 
-I'd like to point out here - if it wasn't obvious already - that hydrologic models are fickle things. One-hundred percent accuracy is impossible; 90% accuracy would be like running a three-minute mile. Generally speaking, the bar for accuracy in hydrologic modeling is absurdly low. That's not a criticism of the engineers and scientists in the field - it's just the nature of the problem. Measuring and simulating natural systems is really, really, really hard.
+I'd like to point out here - if it wasn't obvious already - that hydrologic models are fickle things. One-hundred percent accuracy is completely impossible; 90% accuracy would be like running a four-minute mile. Generally speaking, the bar for accuracy in hydrologic modeling is absurdly low. That's not a criticism of the engineers and scientists in the field - it's just the nature of the problem. Measuring and simulating natural systems is really, really, really hard.
 
 The Chesapeake Bay TMDL is backed by the Chesapeake Bay Model. The CBM is a highly customized system developed by the Chesapeake Bay Program - a group of really smart people at EPA. 
 
-But regarding the CBM, I'm going to go out on a limb here and guess that fewer than two dozen people *really* understand it. Some staff at the Bay Program, a handful of academic researchers, maybe a few consultants, a couple state or federal employees, and that's it. Why so few? Well, just [download](http://ches.communitymodeling.org/models/CBPhase5/) it yourself and get try to get it running. 
+But regarding the CBM, I'm going guess that fewer than two dozen people *really* understand it. There's a lot of posturing and jargon-dropping from consultants who pretend to understand the model, but most don't have a clue. The real group of experts are probably some staff at the Bay Program, a handful of academic researchers, maybe a couple Level 99 consultants, a couple state or federal employees, and that's it. Why so few? Well, just [download](http://ches.communitymodeling.org/models/CBPhase5/) it yourself and get try to get it running. 
 
-Oh, did I mention that you'll need to install Linux first? Yeah, you'll need to install Linux first. Then you'll probably need to compile some Fortran77 code. Have you ever extracted a tar.gz file? Are you comfortable at a Unix command line? Knowing Bash would definitely be helpful. 
+Did I mention that you'll need to install Linux first? Yeah, the Chesapeake Bay Model doesn't run on Windows. Then you'll need to compile some Fortran77 code. Knowing some Bash would be helpful, too. 
 
-Computers are hard! The CBM is very computer-y. Environmental professionals get worked up about nested Excel functions and ArcGIS Model Builder. The CBM is on a whole other level. 
+Computers are hard! The CBM is very computer-y. Environmental professionals get worked up about nested Excel functions and ArcGIS Model Builder. The CBM is on a whole other level. Virtually everyone in the environmental community uses Windows, and most have zero familiarity with [HSPF](http://water.usgs.gov/software/HSPF/), which is the core of the CBM. It's not the sort of thing that your run-of-the-mill environmental engineer can install, let alone grasp. That means there's a huge gap of understanding between the extremely small group of experts who maintain and run the CBM and the very large group of environmental professionals who work to write, enforce, and comply with regulations driven by the Chesapeake Bay TMDL.  
 
 ##Some Closing Thoughts (For Now)##
 
