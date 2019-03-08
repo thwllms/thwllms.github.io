@@ -3,79 +3,91 @@
   <channel>
     <title>thwllms</title>
     <description>thwllms' personal blog.</description>
-    <link>http://www.thwllms.com/</link>
-    <atom:link href="http://www.thwllms.com/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>TIL: the sticky bit</title>
-        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Today I learned about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky bit&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into a shared directory,
 and we can triage them from our computers or phones. It seemed to be working fine, but then I realized
-that I wasn&amp;rsquo;t able to delete files. I could create and read files, but delete just didn&amp;rsquo;t work.&lt;/p&gt;
+that I wasn’t able to delete files. I could create and read files, but delete just didn’t work.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s how the directory looked:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ ls -lah / | grep scanner
+&lt;p&gt;Here’s how the directory looked:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -lah / | grep scanner
 drwxrwxrwt   2 scanner scanner 4.0K Oct  7 18:52 scanner
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;At first I figured there was some sort of group permissions problem. But adding my user to the &lt;code&gt;scanner&lt;/code&gt; group
-didn&amp;rsquo;t solve it.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Turns out it was the &lt;code&gt;t&lt;/code&gt; - the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky bit&lt;/a&gt;. This was preventing any user who wasn&amp;rsquo;t &lt;code&gt;scanner&lt;/code&gt; from deleting
+&lt;p&gt;At first I figured there was some sort of group permissions problem. But adding my user to the &lt;code class=&quot;highlighter-rouge&quot;&gt;scanner&lt;/code&gt; group
+didn’t solve it.&lt;/p&gt;
+
+&lt;p&gt;Turns out it was the &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt; - the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky bit&lt;/a&gt;. This was preventing any user who wasn’t &lt;code class=&quot;highlighter-rouge&quot;&gt;scanner&lt;/code&gt; from deleting
 files in that directory.&lt;/p&gt;
 
 &lt;p&gt;Removing the sticky bit fixed the problem.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ sudo chmod -t /scanner
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod -t /scanner
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
         <pubDate>Sun, 07 Oct 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</guid>
+        <link>http://localhost:4000/blog/2018/10/07/til-sticky-bit/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/10/07/til-sticky-bit/</guid>
       </item>
     
       <item>
         <title>TIL: switching git remotes</title>
-        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;At work we recently migrated our projects from GitLab to Bitbucket. (Sigh&amp;hellip; I miss GitLab CI.) After the repositories
+&lt;p&gt;At work we recently migrated our projects from GitLab to Bitbucket. (Sigh… I miss GitLab CI.) After the repositories
 were copied to Bitbucket, I had reshuffle my git remotes and active branches to point to Bitbucket:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ git remote rename origin upstream
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote rename origin upstream
 $ git remote add origin &amp;lt;new-remote-ssh-url&amp;gt;
 $ git checkout master
 $ git branch --set-upstream-to origin/master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
         <pubDate>Wed, 01 Aug 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</guid>
+        <link>http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</guid>
       </item>
     
       <item>
         <title>TIL: git checkout -m</title>
-        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;You&amp;rsquo;re doing a &lt;code&gt;git merge&lt;/code&gt; and you hit some conflicts. You open an offending file and make changes. But then
-you realize that you&amp;rsquo;ve made some &lt;em&gt;bad&lt;/em&gt; changes. How do you get back to the original merged (albeit conflicted)
+&lt;p&gt;You’re doing a &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt; and you hit some conflicts. You open an offending file and make changes. But then
+you realize that you’ve made some &lt;em&gt;bad&lt;/em&gt; changes. How do you get back to the original merged (albeit conflicted)
 file?&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ git checkout -m &amp;lt;file&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post. &lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -m &amp;lt;file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</guid>
+        <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
       </item>
     
       <item>
         <title>TIL: gron</title>
-        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Today I learned about &lt;a href=&quot;https://github.com/tomnomnom/gron&quot;&gt;gron&lt;/a&gt;, a command-line utilty that makes it easy to search JSON data.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
 json.characters[0].name = &quot;Big Bird&quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;It&amp;rsquo;s basically just printing each item in the object line-by-line.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ gron mydata.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s basically just printing each item in the object line-by-line.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json
 json = {};
 json.characters = [];
 json.characters[0] = {};
@@ -84,23 +96,25 @@ json.characters[0].name = &quot;Big Bird&quot;;
 json.characters[1] = {};
 json.characters[1].location = &quot;Sesame Street&quot;;
 json.characters[1].name = &quot;Oscar the Grouch&quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Super helpful, actually.&lt;/p&gt;
 
-&lt;p&gt;Installed with &lt;code&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Installed with &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
+
 </description>
         <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/04/02/til-gron/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/02/til-gron/</guid>
+        <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
       </item>
     
       <item>
         <title>enumerate() and dict.items()</title>
         <description>&lt;p&gt;&lt;em&gt;Updated 8 Mar 2019.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;enumerate&lt;/code&gt; is a handy built-in Python function that sometimes gets overlooked. It&amp;rsquo;s not life-changing, but it makes things a little cleaner and more concise. &lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt; is a handy built-in Python function that sometimes gets overlooked. It’s not life-changing, but it makes things a little cleaner and more concise.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s say you want to loop through a list, but you want to access both the list items &lt;em&gt;and&lt;/em&gt; the index value for each item. Here&amp;rsquo;s one way to do it:&lt;/p&gt;
+&lt;p&gt;Let’s say you want to loop through a list, but you want to access both the list items &lt;em&gt;and&lt;/em&gt; the index value for each item. Here’s one way to do it:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
@@ -111,12 +125,12 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;However, you can do the same thing a little more gracefully with &lt;code&gt;enumerate&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;However, you can do the same thing a little more gracefully with &lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;code&gt;items&lt;/code&gt; is similar to &lt;code&gt;enumerate&lt;/code&gt;, but for dictionaries. If you were doing this&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt; is similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt;, but for dictionaries. If you were doing this…&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
@@ -127,13 +141,13 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&amp;hellip;try this instead:&lt;/p&gt;
+&lt;p&gt;…try this instead:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Python 3
 &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;code&gt;items&lt;/code&gt; doesn&amp;rsquo;t exist in Python 2.7, but &lt;code&gt;iteritems&lt;/code&gt; does the same thing:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt; doesn’t exist in Python 2.7, but &lt;code class=&quot;highlighter-rouge&quot;&gt;iteritems&lt;/code&gt; does the same thing:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Python 2.7
 &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iteritems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
@@ -142,47 +156,47 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Happy coding!&lt;/p&gt;
 </description>
         <pubDate>Sun, 12 Jul 2015 11:39:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/07/12/enumerate/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/07/12/enumerate/</guid>
+        <link>http://localhost:4000/blog/2015/07/12/enumerate/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/07/12/enumerate/</guid>
       </item>
     
       <item>
         <title>Countour Confusion</title>
         <description>&lt;p&gt;This is something I run into a lot in the engineering/GIS world - a misunderstanding of contour data.&lt;/p&gt;
 
-&lt;p&gt;Often, if you ask for a topographic dataset, you&amp;rsquo;re handed contours. They&amp;rsquo;re easy to understand and they look nice on a map. &lt;/p&gt;
+&lt;p&gt;Often, if you ask for a topographic dataset, you’re handed contours. They’re easy to understand and they look nice on a map.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/contours.png&quot; alt=&quot;So pretty.&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/contours.png&quot; alt=&quot;So pretty.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The problem: many engineers forget that contours are one or more steps removed from the original topographic data. Somebody surveyed a bunch of points and fed the points into a GIS/CAD program to draw those those pretty lines. Contours are generated by interpolating between actual data points. They&amp;rsquo;re merely a visualization tool - they&amp;rsquo;re &lt;em&gt;not&lt;/em&gt; the same or better than the original data. &lt;/p&gt;
+&lt;p&gt;The problem: many engineers forget that contours are one or more steps removed from the original topographic data. Somebody surveyed a bunch of points and fed the points into a GIS/CAD program to draw those those pretty lines. Contours are generated by interpolating between actual data points. They’re merely a visualization tool - they’re &lt;em&gt;not&lt;/em&gt; the same or better than the original data.&lt;/p&gt;
 
-&lt;p&gt;This is really problematic when it comes to LiDAR. If you paid for high-resolution LiDAR, there&amp;rsquo;s no sense in sharing the data as a set of 2-ft contours. That&amp;rsquo;s like taking a picture with a nice digital camera and distruting wallet-size photocopies instead of the original file, or watching a Blu-ray movie on an old CRT television. Sure, those 2-ft contours are handy, but they&amp;rsquo;re less accurate - especially in flat areas, steep areas, along roads, and in stream valleys. Basically, places where accuracy is really important. Between elevation 124 and elevation 126 you could be missing a lot of variation.&lt;/p&gt;
+&lt;p&gt;This is really problematic when it comes to LiDAR. If you paid for high-resolution LiDAR, there’s no sense in sharing the data as a set of 2-ft contours. That’s like taking a picture with a nice digital camera and distruting wallet-size photocopies instead of the original file, or watching a Blu-ray movie on an old CRT television. Sure, those 2-ft contours are handy, but they’re less accurate - especially in flat areas, steep areas, along roads, and in stream valleys. Basically, places where accuracy is really important. Between elevation 124 and elevation 126 you could be missing a lot of variation.&lt;/p&gt;
 
 &lt;p&gt;Save the contours for your maps. Build a DEM from the raw data for actual analysis.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/05/18/contour-confusion/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/18/contour-confusion/</guid>
+        <link>http://localhost:4000/blog/2015/05/18/contour-confusion/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/18/contour-confusion/</guid>
       </item>
     
       <item>
         <title>git init</title>
-        <description>&lt;p&gt;Well, I&amp;rsquo;ve decided to start a blog of sorts. I guess we&amp;rsquo;ll see how this goes, eh?&lt;/p&gt;
+        <description>&lt;p&gt;Well, I’ve decided to start a blog of sorts. I guess we’ll see how this goes, eh?&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s some stuff I might write about:&lt;/p&gt;
+&lt;p&gt;Here’s some stuff I might write about:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Python&lt;/li&gt;
-&lt;li&gt;GIS&lt;/li&gt;
-&lt;li&gt;HEC-RAS&lt;/li&gt;
-&lt;li&gt;TMDLs&lt;/li&gt;
+  &lt;li&gt;Python&lt;/li&gt;
+  &lt;li&gt;GIS&lt;/li&gt;
+  &lt;li&gt;HEC-RAS&lt;/li&gt;
+  &lt;li&gt;TMDLs&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;So&amp;hellip; maybe check back later. &lt;/p&gt;
+&lt;p&gt;So… maybe check back later.&lt;/p&gt;
 </description>
         <pubDate>Sat, 16 May 2015 21:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/05/16/first-post/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/16/first-post/</guid>
+        <link>http://localhost:4000/blog/2015/05/16/first-post/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/16/first-post/</guid>
       </item>
     
   </channel>
