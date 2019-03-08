@@ -7,6 +7,93 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>TIL: the sticky bit</title>
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Today I learned about the &amp;ldquo;sticky bit&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. It seemed to be working fine, but then I realized
+that I wasn&amp;rsquo;t able to delete files. I could create them and read them just fine, but delete didn&amp;rsquo;t work.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how the directory looked:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ ls -lah / | grep scanner
+drwxrwxrwt   2 scanner scanner 4.0K Oct  7 18:52 scanner
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At first I figured there was some sort of group permissions problem. But adding my user to the &lt;code&gt;scanner&lt;/code&gt; group
+didn&amp;rsquo;t solve it.&lt;/p&gt;
+
+&lt;p&gt;Turns out it was the &lt;code&gt;t&lt;/code&gt; - the &amp;ldquo;sticky bit&amp;rdquo;. This was preventing any user who wasn&amp;rsquo;t &lt;code&gt;scanner&lt;/code&gt; from deleting
+files in that directory.&lt;/p&gt;
+
+&lt;p&gt;Removing the sticky bit fixed the problem.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ sudo chmod -t /scanner
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Sun, 07 Oct 2018 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2018/10/07/til-sticky-bit/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/10/07/til-sticky-bit/</guid>
+      </item>
+    
+      <item>
+        <title>TIL: switching git remotes</title>
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;At work we recently migrated our projects from GitLab to Bitbucket. (Sigh&amp;hellip; I miss GitLab CI.) After the repositories
+were copied to Bitbucket, I had reshuffle my git remotes and active branches to point to Bitbucket:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ git remote rename origin upstream
+$ git remote add origin &amp;lt;new-remote-ssh-url&amp;gt;
+$ git checkout master
+$ git branch --set-upstream-to origin/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Wed, 01 Aug 2018 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</guid>
+      </item>
+    
+      <item>
+        <title>TIL: git checkout -m</title>
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re doing a &lt;code&gt;git merge&lt;/code&gt; and you hit some conflicts. You open an offending file and make changes. But then
+you realize that you&amp;rsquo;ve made some &lt;em&gt;bad&lt;/em&gt; changes. How do you get back to the original merged (albeit conflicted)
+file?&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ git checkout -m &amp;lt;file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post. &lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
+      </item>
+    
+      <item>
+        <title>TIL: gron</title>
+        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I&amp;rsquo;ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Today I learned about &lt;a href=&quot;https://github.com/tomnomnom/gron&quot;&gt;gron&lt;/a&gt;, a command-line utilty that makes it easy to search JSON data.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
+json.characters[0].name = &quot;Big Bird&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It&amp;rsquo;s basically just printing each item in the object line-by-line.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ gron mydata.json
+json = {};
+json.characters = [];
+json.characters[0] = {};
+json.characters[0].location = &quot;Sesame Street&quot;;
+json.characters[0].name = &quot;Big Bird&quot;;
+json.characters[1] = {};
+json.characters[1].location = &quot;Sesame Street&quot;;
+json.characters[1].name = &quot;Oscar the Grouch&quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Super helpful, actually.&lt;/p&gt;
+
+&lt;p&gt;Installed with &lt;code&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
+      </item>
+    
+      <item>
         <title>enumerate() and dict.items()</title>
         <description>&lt;p&gt;&lt;em&gt;Updated 8 Mar 2019.&lt;/em&gt;&lt;/p&gt;
 
