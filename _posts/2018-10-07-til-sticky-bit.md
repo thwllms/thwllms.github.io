@@ -10,7 +10,7 @@ _Retroactively published on 8 Mar 2019. A while ago I started keeping a journal 
 
 Today I learned about the [sticky bit](https://en.wikipedia.org/wiki/Sticky_bit).
 
-I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into this folder,
+I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into a shared directory,
 and we can triage them from our computers or phones. It seemed to be working fine, but then I realized
 that I wasn't able to delete files. I could create and read files, but delete just didn't work.
 

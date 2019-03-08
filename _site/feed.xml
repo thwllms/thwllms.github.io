@@ -12,7 +12,7 @@
 
 &lt;p&gt;Today I learned about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky bit&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into this folder,
+&lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into a directory,
 and we can triage them from our computers or phones. It seemed to be working fine, but then I realized
 that I wasn&amp;rsquo;t able to delete files. I could create and read files, but delete just didn&amp;rsquo;t work.&lt;/p&gt;
 
