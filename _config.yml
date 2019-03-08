@@ -52,4 +52,6 @@ redcarpet:
 permalink:    pretty
 paginate:     3
 sass:
-  compressed: true
+  c3ompressed: true
+plugins: 
+  - jekyll-paginate
