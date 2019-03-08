@@ -3,8 +3,8 @@
   <channel>
     <title>thwllms</title>
     <description>thwllms' personal blog.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://www.thwllms.com/</link>
+    <atom:link href="http://www.thwllms.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>TIL: the sticky bit</title>
@@ -12,7 +12,7 @@
 
 &lt;p&gt;Today I learned about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky bit&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into a directory,
+&lt;p&gt;I set up a Samba share on a Raspberry Pi for our household scanner. The scanner dumps files into a shared directory,
 and we can triage them from our computers or phones. It seemed to be working fine, but then I realized
 that I wasn&amp;rsquo;t able to delete files. I could create and read files, but delete just didn&amp;rsquo;t work.&lt;/p&gt;
 
@@ -30,8 +30,8 @@ files in that directory.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;$ sudo chmod -t /scanner
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Sun, 07 Oct 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/10/07/til-sticky-bit/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/10/07/til-sticky-bit/</guid>
+        <link>http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</guid>
       </item>
     
       <item>
@@ -46,8 +46,8 @@ $ git checkout master
 $ git branch --set-upstream-to origin/master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Wed, 01 Aug 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</guid>
+        <link>http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</guid>
       </item>
     
       <item>
@@ -62,8 +62,8 @@ file?&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post. &lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
+        <link>http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</guid>
       </item>
     
       <item>
@@ -90,8 +90,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Installed with &lt;code&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
 </description>
         <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
+        <link>http://www.thwllms.com/blog/2018/04/02/til-gron/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/02/til-gron/</guid>
       </item>
     
       <item>
@@ -142,8 +142,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Happy coding!&lt;/p&gt;
 </description>
         <pubDate>Sun, 12 Jul 2015 11:39:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/07/12/enumerate/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/07/12/enumerate/</guid>
+        <link>http://www.thwllms.com/blog/2015/07/12/enumerate/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/07/12/enumerate/</guid>
       </item>
     
       <item>
@@ -161,8 +161,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Save the contours for your maps. Build a DEM from the raw data for actual analysis.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/05/18/contour-confusion/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/18/contour-confusion/</guid>
+        <link>http://www.thwllms.com/blog/2015/05/18/contour-confusion/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/18/contour-confusion/</guid>
       </item>
     
       <item>
@@ -181,8 +181,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;So&amp;hellip; maybe check back later. &lt;/p&gt;
 </description>
         <pubDate>Sat, 16 May 2015 21:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/05/16/first-post/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/16/first-post/</guid>
+        <link>http://www.thwllms.com/blog/2015/05/16/first-post/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/16/first-post/</guid>
       </item>
     
   </channel>
