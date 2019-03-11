@@ -7,6 +7,41 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Vimscript: auto-highlight matching words</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/toggle-highlight-480.gif&quot; alt=&quot;:q&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s a small script I cobbled together for my &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;. I use it every single day.
+Press &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-h&amp;gt;&lt;/code&gt; to toggle auto-highlighting of matching words in normal mode.&lt;/p&gt;
+
+&lt;div class=&quot;language-vimscript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;exists&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#ToggleAutoHighlightMatchingWordGroup#CursorMoved'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    exe printf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'match IncSearch /\V\&amp;lt;%s\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;      \&lt;/span&gt; escape&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    augroup ToggleAutoHighlightMatchingWordGroup
+      autocmd&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;
+      autocmd &lt;span class=&quot;nb&quot;&gt;CursorMoved&lt;/span&gt; * exe printf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'match IncSearch /\V\&amp;lt;%s\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;            \&lt;/span&gt; escape&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    augroup END
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentTab &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagenr&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentWindow &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagewinnr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;currentTab&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    exe &lt;span class=&quot;s1&quot;&gt;'tabdo windo match IncSeach //'&lt;/span&gt;
+    exe currentTab &lt;span class=&quot;s1&quot;&gt;'tabn'&lt;/span&gt;
+    exe currentWindow &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'wincmd w'&lt;/span&gt;
+    augroup ToggleAutoHighlightMatchingWordGroup
+      autocmd&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;
+    augroup END
+  &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
+noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sun, 10 Mar 2019 07:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</guid>
+      </item>
+    
+      <item>
         <title>TIL: the sticky bit</title>
         <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
