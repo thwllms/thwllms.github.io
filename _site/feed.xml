@@ -7,6 +7,38 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Vimscript: a search/replace shortcut</title>
+        <description>&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; Vim, but one thing that drove me crazy for a long time was search/replace. It’s easy to search for the the
+current word under the cursor - just press &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; in normal mode to start cycling through matches. But replacing that
+word can be annoying if it’s really long. You end up with a lot of keystrokes.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:%s/mySuperLongVariableName/myNewSuperLongVariableName/gc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;One way to save a few keystrokes is to yank &lt;code class=&quot;highlighter-rouge&quot;&gt;mySuperLongVariableName&lt;/code&gt; and paste it into the search command. You can
+do this by yanking the text you want to replace (e.g. select in visual mode and press &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;), typing &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/&lt;/code&gt; to start the
+search, then pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-r&amp;gt;&lt;/code&gt; followed by &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; to paste the search text.&lt;/p&gt;
+
+&lt;p&gt;But that’s still an annoying number of steps. I wrote the script below to start a search/replace command by
+simply pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt;. It grabs the current word under the cursor and prompts for the rest of the replace command.
+In other words, pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt; eliminates need to type &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/mySuperLongVariableName/&lt;/code&gt;. Just fill out the rest.&lt;/p&gt;
+
+&lt;div class=&quot;language-vimscript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; userInput &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; input&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':%s/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; len&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;userInput&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+    exe &lt;span class=&quot;s1&quot;&gt;'%s/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; userInput
+  &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
+noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;s&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 18 Mar 2019 04:11:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</guid>
+      </item>
+    
+      <item>
         <title>Vimscript: auto-highlight matching words</title>
         <description>&lt;p&gt;&lt;img src=&quot;/images/toggle-highlight-480.gif&quot; alt=&quot;:q&quot; /&gt;&lt;/p&gt;
 
