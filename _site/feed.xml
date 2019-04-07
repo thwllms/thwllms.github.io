@@ -3,8 +3,8 @@
   <channel>
     <title>thwllms</title>
     <description>thwllms' personal blog.</description>
-    <link>http://www.thwllms.com/</link>
-    <atom:link href="http://www.thwllms.com/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Vimscript: a search/replace shortcut</title>
@@ -34,8 +34,8 @@ noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 18 Mar 2019 04:11:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/03/18/vimscript-search-replace-shortcut/</guid>
+        <link>http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</guid>
       </item>
     
       <item>
@@ -45,7 +45,7 @@ noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;Here’s a small script I cobbled together for my &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;. I use it every single day.
 Press &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-h&amp;gt;&lt;/code&gt; to toggle auto-highlighting of matching words in normal mode.&lt;/p&gt;
 
-&lt;div class=&quot;language-vimscript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;div class=&quot;language-viml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;exists&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#ToggleAutoHighlightMatchingWordGroup#CursorMoved'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     exe printf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'match IncSearch /\V\&amp;lt;%s\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;se&quot;&gt;      \&lt;/span&gt; escape&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
@@ -69,8 +69,8 @@ noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Mar 2019 07:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2019/03/10/vimscript-highlight-cword/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/03/10/vimscript-highlight-cword/</guid>
+        <link>http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</guid>
       </item>
     
       <item>
@@ -102,8 +102,8 @@ files in that directory.&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 07 Oct 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</guid>
+        <link>http://localhost:4000/blog/2018/10/07/til-sticky-bit/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/10/07/til-sticky-bit/</guid>
       </item>
     
       <item>
@@ -120,8 +120,8 @@ $ git branch --set-upstream-to origin/master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 01 Aug 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</guid>
+        <link>http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</guid>
       </item>
     
       <item>
@@ -138,8 +138,8 @@ file?&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</guid>
+        <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
       </item>
     
       <item>
@@ -171,8 +171,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 
 </description>
         <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2018/04/02/til-gron/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/02/til-gron/</guid>
+        <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
       </item>
     
       <item>
@@ -223,8 +223,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Happy coding!&lt;/p&gt;
 </description>
         <pubDate>Sun, 12 Jul 2015 11:39:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/07/12/enumerate/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/07/12/enumerate/</guid>
+        <link>http://localhost:4000/blog/2015/07/12/enumerate/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/07/12/enumerate/</guid>
       </item>
     
       <item>
@@ -242,8 +242,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;Save the contours for your maps. Build a DEM from the raw data for actual analysis.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/05/18/contour-confusion/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/18/contour-confusion/</guid>
+        <link>http://localhost:4000/blog/2015/05/18/contour-confusion/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/18/contour-confusion/</guid>
       </item>
     
       <item>
@@ -262,8 +262,8 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 &lt;p&gt;So… maybe check back later.&lt;/p&gt;
 </description>
         <pubDate>Sat, 16 May 2015 21:00:00 -0400</pubDate>
-        <link>http://www.thwllms.com/blog/2015/05/16/first-post/</link>
-        <guid isPermaLink="true">http://www.thwllms.com/blog/2015/05/16/first-post/</guid>
+        <link>http://localhost:4000/blog/2015/05/16/first-post/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/16/first-post/</guid>
       </item>
     
   </channel>

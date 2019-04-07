@@ -6,7 +6,8 @@ summary:    git commit -m "First post."
 categories: blog
 ---
 
-Well, I've decided to start a blog of sorts. I guess we'll see how this goes, eh?
+Well, I've decided to start a blog of sorts. I guess we'll see how this goes,
+eh?
 
 Here's some stuff I might write about:
 

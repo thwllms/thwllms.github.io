@@ -8,9 +8,11 @@ categories: blog
 
 _Updated 8 Mar 2019._
 
-`enumerate` is a handy built-in Python function that sometimes gets overlooked. It's not life-changing, but it makes things a little cleaner and more concise. 
+`enumerate` is a handy built-in Python function that sometimes gets overlooked.
+It's not life-changing, but it makes things a little cleaner and more concise. 
 
-Let's say you want to loop through a list, but you want to access both the list items *and* the index value for each item. Here's one way to do it:
+Let's say you want to loop through a list, but you want to access both the list
+items *and* the index value for each item. Here's one way to do it:
 
 {% highlight python %}
 >>> my_list = ['a', 'b', 'c']
@@ -30,7 +32,8 @@ However, you can do the same thing a little more gracefully with `enumerate`:
 ...     print(index, item)
 {% endhighlight %}
 
-`items` is similar to `enumerate`, but for dictionaries. If you were doing this...
+`items` is similar to `enumerate`, but for dictionaries. If you were doing
+this...
 
 {% highlight python %}
 >>> my_dict = {0:'a', 1:'b', 2:'c'}

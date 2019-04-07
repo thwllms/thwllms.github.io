@@ -8,10 +8,11 @@ categories: blog
 
 ![:q]({{ site.images }}/toggle-highlight-480.gif)
 
-Here's a small script I cobbled together for my `~/.vimrc`. I use it every single day.
-Press `<c-h>` to toggle auto-highlighting of matching words in normal mode.
+Here's a small script I cobbled together for my `~/.vimrc`. I use it every
+single day.  Press `<c-h>` to toggle auto-highlighting of matching words in
+normal mode.
 
-```vimscript
+```viml
 function! ToggleAutoHighlightMatchingWord()
   if !exists('#ToggleAutoHighlightMatchingWordGroup#CursorMoved')
     exe printf('match IncSearch /\V\<%s\>/',
