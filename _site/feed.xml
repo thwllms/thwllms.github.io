@@ -8,7 +8,9 @@
     
       <item>
         <title>Vimscript: a search/replace shortcut</title>
-        <description>&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; Vim, but one thing that drove me crazy for a long time was
+        <description>&lt;p&gt;&lt;em&gt;Updated 2 May 2019.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; Vim, but one thing that drove me crazy for a long time was
 search/replace. It’s easy to search for the current word under the cursor - just
 press &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; in normal mode to start cycling through matches. But replacing that
 word can be annoying if it’s really long. You end up with a lot of keystrokes.&lt;/p&gt;
@@ -29,13 +31,19 @@ Just fill out the rest.&lt;/p&gt;
 
 &lt;div class=&quot;language-viml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; userInput &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; input&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':%s/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; userInput &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; input&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':%s/\&amp;lt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; len&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;userInput&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-    exe &lt;span class=&quot;s1&quot;&gt;'%s/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; userInput
+    exe &lt;span class=&quot;s1&quot;&gt;'%s/\&amp;lt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\&amp;gt;/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; userInput
   &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
 noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;s&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Update (2 May 2019): I ran into an issue with the original version of this
+script where I accidentally did a replace on a partial match. For instance, I
+tried to replace the word &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;barstool&lt;/code&gt;, but in doing so changed
+&lt;code class=&quot;highlighter-rouge&quot;&gt;barometric&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;barstoolometric&lt;/code&gt;. Wrapping the search term in &lt;code class=&quot;highlighter-rouge&quot;&gt;\&amp;lt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;\&amp;gt;&lt;/code&gt;
+instead (like &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;this\&amp;gt;/that&lt;/code&gt;) tells Vim to replace whole-word matches only.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Mar 2019 04:11:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
