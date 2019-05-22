@@ -8,10 +8,10 @@ categories: blog
 
 Climate change is something I find myself fretting about from time to time. Two
 hundred years from now I think it might be regarded as the driving issue of the
-21st century. The scale of climate change is so large that it's difficult to
-grasp intuitively. There many solutions touted (renewable energy, carbon
-capture, geoengineering, etc.), but without putting them in context it's hard to
-understand how effective they might actually be.
+21st century. The scale of climate change is difficult to grasp intuitively.
+Many solutions are touted (renewable energy, carbon capture, geoengineering,
+etc.), but without putting them in context it's hard to understand how effective
+they might actually be.
 
 A couple weeks ago the founder of a company called Prometheus posted a [thread
 on Hacker News](https://news.ycombinator.com/item?id=19842240) introducing his
@@ -27,7 +27,8 @@ founder mentioned that they "expect a gallon of gasoline to require 60 kWh of
 electrical energy."
 
 This got me wondering - if this process was infinitely scalable, how much energy
-would it take to make the entire planet carbon-neutral? Humankind emits
+would it take to make the entire planet carbon-neutral? In other words, what if
+we simply stored the resulting gasoline instead of burning it? Humankind emits
 something like [36 gigatonnes of CO<sub>2</sub> per
 year](https://www.co2.earth/global-co2-emissions). At 60 kWh per gallon of
 gasoline produced by Prometheus' technology, what would it take to get from 36
@@ -72,7 +73,12 @@ generating capacity**, and **9 times the current world electrical generating
 capacity**.
 
 Even if Prometheus' technology removes many, many times more CO<sub>2</sub> per
-gallon of gasoline produced, it would still take sci-fi levels of energy to
-offset current emissions.
+gallon of gasoline produced, we're still talking sci-fi levels of energy.
 
-Oof. Hopefully I'm wrong.
+If, somehow, we could produce that much energy to scale the process, what would
+we do with all the gasoline? Assuming the same 9.1 kg CO<sub>2</sub> per gallon
+figure, we'd end up with roughly `4*10^12` gallons of gasoline, or 3.6 cubic
+miles. That's almost enough to fill [Seneca
+Lake](https://en.wikipedia.org/wiki/Seneca_Lake_(New_York)).
+
+Oof. Hopefully I'm off... by many orders of magnitude.
