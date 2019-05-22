@@ -53,7 +53,7 @@ Rearranging to solve for `total_energy`:
 total_energy = co2_removed * energy_per_gallon / co2_per_gallon
 ```
 
-One gallon of gasoline converts to about [9.1 kg of
+One gallon of gasoline converts to about [20 lbs (9.1 kg) of
 CO<sub>2</sub>](https://www.fueleconomy.gov/feg/contentIncludes/co2_inc.htm)
 when burned; for simplicity we'll also assume that Prometheus' technology
 removes that same amount of CO<sub>2</sub> per gallon of gasoline produced.  To
@@ -61,10 +61,10 @@ make things really simple, we'll assume that the energy used by the process
 comes from carbon-neutral sources.
 
 ```
-total_energy = 36*10^12 kg * 60 kWh/gal / 9.07 kg/gal
+total_energy = 36*10^12 kg * 60 kWh/gal / 9.1 kg/gal
 ```
 
-We get `2.38*10^14 kWh`, or 23,800 TWh. By comparison, [in 2017 the United
+We get `2.4*10^14 kWh`, or 24,000 TWh. By comparison, [in 2017 the United
 States produced 4,282 TWh of electricity, and worldwide production was 25,551
 TWh](https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production).
 In other words, this process would consume **56 times the current US electrical
