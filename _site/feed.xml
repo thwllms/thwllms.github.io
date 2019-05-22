@@ -7,6 +7,83 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Prometheus' Carbon Capture Claims</title>
+        <description>&lt;p&gt;Climate change is something I find myself fretting about from time to time. Two
+hundred years from now I think it might be regarded as the driving issue of the
+21st century. The scale of climate change is so large that it’s difficult to
+grasp intuitively. There many solutions touted (renewable energy, carbon
+capture, geoengineering, etc.), but without putting them in context it’s hard to
+understand how effective they might actually be.&lt;/p&gt;
+
+&lt;p&gt;A couple weeks ago the founder of a company called Prometheus posted a &lt;a href=&quot;https://news.ycombinator.com/item?id=19842240&quot;&gt;thread
+on Hacker News&lt;/a&gt; introducing his
+company’s technology, which converts CO&lt;sub&gt;2&lt;/sub&gt; into gasoline and other
+fuels. Apparently they grab CO&lt;sub&gt;2&lt;/sub&gt; from the air, mix it with water, do
+some fancy chemistry to turn the CO&lt;sub&gt;2&lt;/sub&gt; into alcohols, extract the
+alcohols using a carbon nanotube membrane, and up-convert the alcohols into
+fuel.&lt;/p&gt;
+
+&lt;p&gt;A good portion of the thread is about electricity costs, fuel costs, and the
+viability of Prometheus as a business. A bit deeper in the conversation the
+founder mentioned that they “expect a gallon of gasoline to require 60 kWh of
+electrical energy.”&lt;/p&gt;
+
+&lt;p&gt;This got me wondering - if this process was infinitely scalable, how much energy
+would it take to make the entire planet carbon-neutral? Humankind emits
+something like &lt;a href=&quot;https://www.co2.earth/global-co2-emissions&quot;&gt;36 gigatonnes of CO&lt;sub&gt;2&lt;/sub&gt; per
+year&lt;/a&gt;. At 60 kWh per gallon of
+gasoline produced by Prometheus’ technology, what would it take to get from 36
+gigatonnes of emissions to zero?&lt;/p&gt;
+
+&lt;p&gt;Here’s a basic equation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;co2_removed = co2_per_gallon * (1/energy_per_gallon) * total_energy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;co2_removed&lt;/code&gt;: kilograms of carbon removed by the process.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;co2_per_gallon&lt;/code&gt;: kilograms of CO&lt;sub&gt;2&lt;/sub&gt; removed from the atmosphere to
+create a gallon of gasoline.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;energy_per_gallon&lt;/code&gt;: kilowatt-hours required to produce one gallon of
+gasoline.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;: kilowatt-hours consumed by the process.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rearranging to solve for &lt;code class=&quot;highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = co2_removed * energy_per_gallon / co2_per_gallon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;One gallon of gasoline converts to about &lt;a href=&quot;https://www.fueleconomy.gov/feg/contentIncludes/co2_inc.htm&quot;&gt;9.1 kg of
+CO&lt;sub&gt;2&lt;/sub&gt;&lt;/a&gt;
+when burned; for simplicity we’ll also assume that Prometheus’ technology
+removes that same amount of CO&lt;sub&gt;2&lt;/sub&gt; per gallon of gasoline produced.  To
+make things really simple, we’ll assume that the energy used by the process
+comes from carbon-neutral sources.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = 36*10^12 kg * 60 kWh/gal / 9.07 kg/gal
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We get &lt;code class=&quot;highlighter-rouge&quot;&gt;2.38*10^14 kWh&lt;/code&gt;, or 23,800 TWh. By comparison, &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production&quot;&gt;in 2017 the United
+States produced 4,282 TWh of electricity, and worldwide production was 25,551
+TWh&lt;/a&gt;.
+In other words, this process would consume &lt;strong&gt;56 times the current US electrical
+generating capacity&lt;/strong&gt;, and &lt;strong&gt;9 times the current world electrical generating
+capacity&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Even if Prometheus’ technology removes many, many times more CO&lt;sub&gt;2&lt;/sub&gt; per
+gallon of gasoline produced, it would still take sci-fi levels of energy to
+offset current emissions.&lt;/p&gt;
+
+&lt;p&gt;Oof. Hopefully I’m wrong.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 May 2019 18:20:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/05/21/prometheus-hackernews-climate-change/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/05/21/prometheus-hackernews-climate-change/</guid>
+      </item>
+    
+      <item>
         <title>Vimscript: a search/replace shortcut</title>
         <description>&lt;p&gt;&lt;em&gt;Updated 2 May 2019.&lt;/em&gt;&lt;/p&gt;
 
