@@ -77,8 +77,9 @@ gallon of gasoline produced, we're still talking sci-fi levels of energy.
 
 If, somehow, we could produce that much energy to scale the process, what would
 we do with all the gasoline? Assuming the same 9.1 kg CO<sub>2</sub> per gallon
-figure, we'd end up with roughly `4*10^12` gallons of gasoline, or 3.6 cubic
-miles. That's almost enough to fill [Seneca
-Lake](https://en.wikipedia.org/wiki/Seneca_Lake_(New_York)).
+figure, converting 36 gigatonnes of CO<sub>2</sub> would result in `4*10^12`
+gallons of gasoline, or 3.6 cubic miles. That's almost enough to fill [Seneca
+Lake](https://en.wikipedia.org/wiki/Seneca_Lake_(New_York)). A cube of gasoline,
+1.53 miles on each side. Annually.
 
 Oof. Hopefully I'm off... by many orders of magnitude.
