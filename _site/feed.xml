@@ -7,13 +7,53 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>What's the toll on I-66? (dot com)</title>
+        <description>&lt;p&gt;TL;DR: I made a website - &lt;a href=&quot;http://whatsthetolloni66.com&quot;&gt;whatsthetolloni66.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/whats-the-toll.gif&quot; alt=&quot;:q&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Anyone who commutes to DC from Northern Virginia knows about the rush-hour
+congestion pricing on I-66. HOV-2+ vehicles are free, but solo drivers can
+expect to pay &lt;a href=&quot;http://www.fox5dc.com/news/local-news/i-66-express-lanes-toll-spikes-to-46-for-tuesday-morning-commute&quot;&gt;a
+&lt;em&gt;lot&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Occasionally I have to drive toward DC for work. I-66 is usually the fastest
+route, but toll prices can be all over the place ($20 from I-495 to DC is not
+unusual, although with light traffic it can be less than $5). I’ve tried
+checking VDOT’s &lt;a href=&quot;vai66tolls.com&quot;&gt;vai66tolls.com&lt;/a&gt; website before heading out, but
+the price always changes by the time I actually get to I-66. Quickly checking
+the site on my phone is &lt;em&gt;not&lt;/em&gt; an option - the interface definitely isn’t
+intended to be used on mobile devices.&lt;/p&gt;
+
+&lt;p&gt;A while ago I decided to scrape the I-66 toll data from VDOT’s website. This
+turned out to be more difficult than I assumed.  The VDOT site’s interface sends
+multiple POST requests back to the server before the toll is actually returned.
+It took a while to figure out what these requests actually accomplish,
+especially since the requests include lots of extraneous form data. Eventually I
+arrived at Python script that could replicate the series of requests and extract
+the toll for a given route.&lt;/p&gt;
+
+&lt;p&gt;Recently I transformed that Python script into a small API with Flask and got it
+running on AWS Lambda. Then I built a really basic React UI - which is
+definitely overkill, but whatever. So… here it is:
+&lt;a href=&quot;http://whatsthetolloni66.com&quot;&gt;whatsthetolloni66.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Not much, but actually pretty useful. Planning to add new features here and
+there.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Jun 2019 05:00:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/06/24/whats-the-toll/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/06/24/whats-the-toll/</guid>
+      </item>
+    
+      <item>
         <title>Prometheus' Carbon Capture Claims</title>
         <description>&lt;p&gt;Climate change is something I find myself fretting about from time to time. Two
 hundred years from now I think it might be regarded as the driving issue of the
-21st century. The scale of climate change is so large that it’s difficult to
-grasp intuitively. There many solutions touted (renewable energy, carbon
-capture, geoengineering, etc.), but without putting them in context it’s hard to
-understand how effective they might actually be.&lt;/p&gt;
+21st century. The scale of climate change is difficult to grasp intuitively.
+Many solutions are touted (renewable energy, carbon capture, geoengineering,
+etc.), but without putting them in context it’s hard to understand how effective
+they might actually be.&lt;/p&gt;
 
 &lt;p&gt;A couple weeks ago the founder of a company called Prometheus posted a &lt;a href=&quot;https://news.ycombinator.com/item?id=19842240&quot;&gt;thread
 on Hacker News&lt;/a&gt; introducing his
@@ -29,7 +69,8 @@ founder mentioned that they “expect a gallon of gasoline to require 60 kWh of
 electrical energy.”&lt;/p&gt;
 
 &lt;p&gt;This got me wondering - if this process was infinitely scalable, how much energy
-would it take to make the entire planet carbon-neutral? Humankind emits
+would it take to make the entire planet carbon-neutral? In other words, what if
+we simply stored the resulting gasoline instead of burning it? Humankind emits
 something like &lt;a href=&quot;https://www.co2.earth/global-co2-emissions&quot;&gt;36 gigatonnes of CO&lt;sub&gt;2&lt;/sub&gt; per
 year&lt;/a&gt;. At 60 kWh per gallon of
 gasoline produced by Prometheus’ technology, what would it take to get from 36
@@ -55,17 +96,17 @@ gasoline.&lt;/li&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = co2_removed * energy_per_gallon / co2_per_gallon
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;One gallon of gasoline converts to about &lt;a href=&quot;https://www.fueleconomy.gov/feg/contentIncludes/co2_inc.htm&quot;&gt;9.1 kg of
+&lt;p&gt;One gallon of gasoline converts to about &lt;a href=&quot;https://www.fueleconomy.gov/feg/contentIncludes/co2_inc.htm&quot;&gt;20 lbs (9.1 kg) of
 CO&lt;sub&gt;2&lt;/sub&gt;&lt;/a&gt;
 when burned; for simplicity we’ll also assume that Prometheus’ technology
 removes that same amount of CO&lt;sub&gt;2&lt;/sub&gt; per gallon of gasoline produced.  To
 make things really simple, we’ll assume that the energy used by the process
 comes from carbon-neutral sources.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = 36*10^12 kg * 60 kWh/gal / 9.07 kg/gal
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = 36*10^12 kg * 60 kWh/gal / 9.1 kg/gal
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We get &lt;code class=&quot;highlighter-rouge&quot;&gt;2.38*10^14 kWh&lt;/code&gt;, or 23,800 TWh. By comparison, &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production&quot;&gt;in 2017 the United
+&lt;p&gt;We get &lt;code class=&quot;highlighter-rouge&quot;&gt;2.4*10^14 kWh&lt;/code&gt;, or 24,000 TWh. By comparison, &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production&quot;&gt;in 2017 the United
 States produced 4,282 TWh of electricity, and worldwide production was 25,551
 TWh&lt;/a&gt;.
 In other words, this process would consume &lt;strong&gt;56 times the current US electrical
@@ -73,10 +114,16 @@ generating capacity&lt;/strong&gt;, and &lt;strong&gt;9 times the current world 
 capacity&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Even if Prometheus’ technology removes many, many times more CO&lt;sub&gt;2&lt;/sub&gt; per
-gallon of gasoline produced, it would still take sci-fi levels of energy to
-offset current emissions.&lt;/p&gt;
+gallon of gasoline produced, we’re still talking sci-fi levels of energy.&lt;/p&gt;
 
-&lt;p&gt;Oof. Hopefully I’m wrong.&lt;/p&gt;
+&lt;p&gt;If, somehow, we could produce that much energy to scale the process, what would
+we do with all the gasoline? Assuming the same 9.1 kg CO&lt;sub&gt;2&lt;/sub&gt; per gallon
+figure, converting 36 gigatonnes of CO&lt;sub&gt;2&lt;/sub&gt; would result in &lt;code class=&quot;highlighter-rouge&quot;&gt;4*10^12&lt;/code&gt;
+gallons of gasoline, or 3.6 cubic miles. That’s almost enough to fill &lt;a href=&quot;https://en.wikipedia.org/wiki/Seneca_Lake_(New_York)&quot;&gt;Seneca
+Lake&lt;/a&gt;. A cube of gasoline,
+1.53 miles on each side. Annually.&lt;/p&gt;
+
+&lt;p&gt;Oof. Hopefully I’m off… by many orders of magnitude.&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 May 2019 18:20:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2019/05/21/prometheus-hackernews-climate-change/</link>
@@ -359,27 +406,6 @@ analysis.&lt;/p&gt;
         <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2015/05/18/contour-confusion/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2015/05/18/contour-confusion/</guid>
-      </item>
-    
-      <item>
-        <title>git init</title>
-        <description>&lt;p&gt;Well, I’ve decided to start a blog of sorts. I guess we’ll see how this goes,
-eh?&lt;/p&gt;
-
-&lt;p&gt;Here’s some stuff I might write about:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Python&lt;/li&gt;
-  &lt;li&gt;GIS&lt;/li&gt;
-  &lt;li&gt;HEC-RAS&lt;/li&gt;
-  &lt;li&gt;TMDLs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So… maybe check back later.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 16 May 2015 21:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/05/16/first-post/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/16/first-post/</guid>
       </item>
     
   </channel>
