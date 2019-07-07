@@ -7,6 +7,90 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Voiding the warranty on my keyboard</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/controllers.jpg&quot; alt=&quot;top: original; bottom: hasu&quot; /&gt;
+&lt;em&gt;top: stock FC660C controller; bottom: Hasu FC660C controller&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m the proud owner of a &lt;a href=&quot;https://mechanicalkeyboards.com/shop/index.php?l=product_detail&amp;amp;p=3829&quot;&gt;Leopold
+FC660C&lt;/a&gt;
+keyboard. I love the feel of the Topre switches, and it’s the perfect size. The
+layout, however, is not &lt;em&gt;quite&lt;/em&gt;
+perfect.&lt;/p&gt;
+
+&lt;p&gt;For instance, I prefer to use Caps Lock as an Escape key. The backtick/tilde key
+on the FC660C shares a spot with Escape, which is slightly weird. I also like to
+switch LCtrl and LGui. I cobbled together a software solution to get the layout
+I wanted, using a combination of &lt;a href=&quot;https://pqrs.org/osx/karabiner/&quot;&gt;Karabiner
+Elements&lt;/a&gt; and the macOS keyboard options. But
+if I ever wanted to use my keyboard on a different computer, I’d have to set it
+up all over again.&lt;/p&gt;
+
+&lt;p&gt;This weekend I switched out the keyboard’s stock controller for the &lt;a href=&quot;https://www.1upkeyboards.com/shop/controllers/fc660c-controller/&quot;&gt;Hasu FC660C
+Controller&lt;/a&gt;.
+Now my keyboard is fully programmable! No extra software configuration on
+different computers.&lt;/p&gt;
+
+&lt;p&gt;I’m not well-versed in electronics, and I was terrified of screwing up my
+precious keyboard or the Hasu controller. But the installation turned out to be
+super straightforward. I’m really happy with the results.&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://geekhack.org/index.php?topic=90317.0&quot;&gt;Installation instructions from Hasu himself&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=TYmAb8zOPWU&amp;amp;feature=youtu.be&amp;amp;t=3m6s&quot;&gt;Great video on installing controller (flashing steps are Windows-only, though)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.tmk-kbd.com/tmk_keyboard/editor/unimap/?fc660c&quot;&gt;Keymap editor to generate the hex file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;steps-followed-macos&quot;&gt;Steps followed (macOS)&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install dfu-programmer&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;On the back of the keyboard, remove the “OK” warranty sticker and the black
+screw underneath&lt;/li&gt;
+  &lt;li&gt;Gently pry open the gap between the back and the front bezel; insert a few
+credit cards to keep it open&lt;/li&gt;
+  &lt;li&gt;Slowly, carefully, pry and pop off the bezel&lt;/li&gt;
+  &lt;li&gt;Unscrew the controller from the back (2 smaller silver screws)&lt;/li&gt;
+  &lt;li&gt;Remove the ribbon cable from the stock controller&lt;/li&gt;
+  &lt;li&gt;Insert the ribbon cable into the Hasu controller&lt;/li&gt;
+  &lt;li&gt;Screw down the Hasu controller&lt;/li&gt;
+  &lt;li&gt;Replace the screw on the back&lt;/li&gt;
+  &lt;li&gt;Pop the front bezel back on&lt;/li&gt;
+  &lt;li&gt;Plug the keyboard in and verify that it works&lt;/li&gt;
+  &lt;li&gt;Use the &lt;a href=&quot;http://www.tmk-kbd.com/tmk_keyboard/editor/unimap/?fc660c&quot;&gt;keymap
+editor&lt;/a&gt; to set the
+desired layout and download the resulting hex file (&lt;code class=&quot;highlighter-rouge&quot;&gt;unimap.hex&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Press the button on the back of the keyboard on the Hasu controller (where
+the dipswitches on the stock controller used to be) to put the controller in
+bootloader mode&lt;/li&gt;
+  &lt;li&gt;Clear the current controller memory
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 erase --force
+  Erasing flash...  Success
+  Checking memory from 0x0 to 0x6FFF...  Empty.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Load the new hex file
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 flash ~/Downloads/unimap.hex
+  Checking memory from 0x0 to 0x6FFF...  Empty.
+  0%                            100%  Programming 0x7000 bytes...
+  [&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;]  Success
+  0%                            100%  Reading 0x7000 bytes...
+  [&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;]  Success
+  Validating...  Success
+  0x7000 bytes written into 0x7000 bytes memory (100.00%).
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reset the controller state
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 reset
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 01 Jul 2019 10:22:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/07/01/keyboard-controller/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/07/01/keyboard-controller/</guid>
+      </item>
+    
+      <item>
         <title>What's the toll on I-66? (dot com)</title>
         <description>&lt;p&gt;TL;DR: I made a website - &lt;a href=&quot;http://whatsthetolloni66.com&quot;&gt;whatsthetolloni66.com&lt;/a&gt;&lt;/p&gt;
 
@@ -373,39 +457,6 @@ this…&lt;/p&gt;
         <pubDate>Sun, 12 Jul 2015 11:39:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2015/07/12/enumerate/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2015/07/12/enumerate/</guid>
-      </item>
-    
-      <item>
-        <title>Countour Confusion</title>
-        <description>&lt;p&gt;This is something I run into a lot in the engineering/GIS world - a
-misunderstanding of contour data.&lt;/p&gt;
-
-&lt;p&gt;Often, if you ask for a topographic dataset, you’re handed contours. They’re
-easy to understand and they look nice on a map.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/contours.png&quot; alt=&quot;So pretty.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The problem: many engineers forget that contours are one or more steps removed
-from the original topographic data. Somebody surveyed a bunch of points and fed
-the points into a GIS/CAD program to draw those those pretty lines. Contours are
-generated by interpolating between actual data points. They’re merely a
-visualization tool - they’re &lt;em&gt;not&lt;/em&gt; the same or better than the original data.&lt;/p&gt;
-
-&lt;p&gt;This is really problematic when it comes to LiDAR. If you paid for
-high-resolution LiDAR, there’s no sense in sharing the data as a set of 2-ft
-contours. That’s like taking a picture with a nice digital camera and distributing
-wallet-size photocopies instead of the original file, or watching a Blu-ray
-movie on an old CRT television. Sure, those 2-ft contours are handy, but they’re
-less accurate - especially in flat areas, steep areas, along roads, and in
-stream valleys. Basically, places where accuracy is really important. Between
-elevation 124 and elevation 126 you could be missing a lot of variation.&lt;/p&gt;
-
-&lt;p&gt;Save the contours for your maps. Build a DEM from the raw data for actual
-analysis.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 May 2015 09:16:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/05/18/contour-confusion/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/05/18/contour-confusion/</guid>
       </item>
     
   </channel>
