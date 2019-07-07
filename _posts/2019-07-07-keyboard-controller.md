@@ -57,7 +57,7 @@ super straightforward. I'm really happy with the results.
 1. Press the button on the back of the keyboard on the Hasu controller (where
    the dipswitches on the stock controller used to be) to put the controller in
    bootloader mode
-1. Clear the current controller memory
+1. Clear the controller memory
   ```
   $ dfu-programmer atmega32u4 erase --force
   Erasing flash...  Success
