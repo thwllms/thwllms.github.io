@@ -2,9 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>thwllms</title>
-    <description>thwllms' personal blog.</description>
+    <description>thwllms&apos; personal blog.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Making Space</title>
+        <description>&lt;p&gt;My disk has been verging on 100% capacity for a long time. I’ve
+always known that the problem is Docker, but I finally got around
+to resolving it.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; docker system prune
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This took a while to run, but cleared an embarassing amount of space.
+I followed this up with optimizing Docker’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ext4.vhdx&lt;/code&gt; file. 
+The top answers on Stack Overflow point to an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Optimize-Vhd&lt;/code&gt; command,
+which wasn’t found on my system. Instead, I followed
+&lt;a href=&quot;https://github.com/microsoft/WSL/issues/4699#issuecomment-627133168&quot;&gt;these steps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Shut down Docker Desktop, then:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; wsl --shutdown
+&amp;gt; diskpart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A new shell window opens with the Diskpart program running. Then from the Diskpart
+command line:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; select vdisk file=&quot;C:\Users\…\ext4.vhdx&quot;
+&amp;gt; attach vdisk readonly
+&amp;gt; compact vdisk
+&amp;gt; detach vdisk
+&amp;gt; exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 27 Mar 2023 07:11:11 -0400</pubDate>
+        <link>http://localhost:4000/blog/2023/03/27/making-space/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/03/27/making-space/</guid>
+      </item>
     
       <item>
         <title>Voiding the warranty on my keyboard</title>
@@ -43,7 +77,7 @@ super straightforward. I’m really happy with the results.&lt;/p&gt;
 
 &lt;h2 id=&quot;steps-followed-macos&quot;&gt;Steps followed (macOS)&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;brew install dfu-programmer&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install dfu-programmer&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;On the back of the keyboard, remove the “OK” warranty sticker and the black
 screw underneath&lt;/li&gt;
   &lt;li&gt;Gently pry open the gap between the back and the front bezel; insert a few
@@ -58,18 +92,18 @@ credit cards to keep it open&lt;/li&gt;
   &lt;li&gt;Plug the keyboard in and verify that it works&lt;/li&gt;
   &lt;li&gt;Use the &lt;a href=&quot;http://www.tmk-kbd.com/tmk_keyboard/editor/unimap/?fc660c&quot;&gt;keymap
 editor&lt;/a&gt; to set the
-desired layout and download the resulting hex file (&lt;code class=&quot;highlighter-rouge&quot;&gt;unimap.hex&lt;/code&gt;)&lt;/li&gt;
+desired layout and download the resulting hex file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unimap.hex&lt;/code&gt;)&lt;/li&gt;
   &lt;li&gt;Press the button on the back of the keyboard on the Hasu controller (where
 the dipswitches on the stock controller used to be) to put the controller in
 bootloader mode&lt;/li&gt;
-  &lt;li&gt;Clear the current controller memory
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 erase --force
+  &lt;li&gt;Clear the controller memory
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 erase --force
   Erasing flash...  Success
   Checking memory from 0x0 to 0x6FFF...  Empty.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Load the new hex file
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 flash ~/Downloads/unimap.hex
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 flash ~/Downloads/unimap.hex
   Checking memory from 0x0 to 0x6FFF...  Empty.
   0%                            100%  Programming 0x7000 bytes...
   [&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;]  Success
@@ -80,18 +114,18 @@ bootloader mode&lt;/li&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Reset the controller state
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 reset
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ dfu-programmer atmega32u4 reset
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Mon, 01 Jul 2019 10:22:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/07/01/keyboard-controller/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/07/01/keyboard-controller/</guid>
+        <pubDate>Sun, 07 Jul 2019 10:22:00 -0400</pubDate>
+        <link>http://localhost:4000/blog/2019/07/07/keyboard-controller/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2019/07/07/keyboard-controller/</guid>
       </item>
     
       <item>
-        <title>What's the toll on I-66? (dot com)</title>
+        <title>What&apos;s the toll on I-66? (dot com)</title>
         <description>&lt;p&gt;TL;DR: I made a website - &lt;a href=&quot;http://whatsthetolloni66.com&quot;&gt;whatsthetolloni66.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/whats-the-toll.gif&quot; alt=&quot;:q&quot; /&gt;&lt;/p&gt;
@@ -131,7 +165,7 @@ there.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Prometheus' Carbon Capture Claims</title>
+        <title>Prometheus&apos; Carbon Capture Claims</title>
         <description>&lt;p&gt;Climate change is something I find myself fretting about from time to time. Two
 hundred years from now I think it might be regarded as the driving issue of the
 21st century. The scale of climate change is difficult to grasp intuitively.
@@ -162,22 +196,22 @@ gigatonnes of emissions to zero?&lt;/p&gt;
 
 &lt;p&gt;Here’s a basic equation:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;co2_removed = co2_per_gallon * (1/energy_per_gallon) * total_energy
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;co2_removed = co2_per_gallon * (1/energy_per_gallon) * total_energy
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;co2_removed&lt;/code&gt;: kilograms of carbon removed by the process.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;co2_per_gallon&lt;/code&gt;: kilograms of CO&lt;sub&gt;2&lt;/sub&gt; removed from the atmosphere to
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;co2_removed&lt;/code&gt;: kilograms of carbon removed by the process.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;co2_per_gallon&lt;/code&gt;: kilograms of CO&lt;sub&gt;2&lt;/sub&gt; removed from the atmosphere to
 create a gallon of gasoline.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;energy_per_gallon&lt;/code&gt;: kilowatt-hours required to produce one gallon of
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;energy_per_gallon&lt;/code&gt;: kilowatt-hours required to produce one gallon of
 gasoline.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;: kilowatt-hours consumed by the process.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;: kilowatt-hours consumed by the process.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Rearranging to solve for &lt;code class=&quot;highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Rearranging to solve for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;total_energy&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = co2_removed * energy_per_gallon / co2_per_gallon
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = co2_removed * energy_per_gallon / co2_per_gallon
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;One gallon of gasoline converts to about &lt;a href=&quot;https://www.fueleconomy.gov/feg/contentIncludes/co2_inc.htm&quot;&gt;20 lbs (9.1 kg) of
@@ -187,10 +221,10 @@ removes that same amount of CO&lt;sub&gt;2&lt;/sub&gt; per gallon of gasoline pr
 make things really simple, we’ll assume that the energy used by the process
 comes from carbon-neutral sources.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = 36*10^12 kg * 60 kWh/gal / 9.1 kg/gal
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total_energy = 36*10^12 kg * 60 kWh/gal / 9.1 kg/gal
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We get &lt;code class=&quot;highlighter-rouge&quot;&gt;2.4*10^14 kWh&lt;/code&gt;, or 24,000 TWh. By comparison, &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production&quot;&gt;in 2017 the United
+&lt;p&gt;We get &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2.4*10^14 kWh&lt;/code&gt;, or 24,000 TWh. By comparison, &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_countries_by_electricity_production&quot;&gt;in 2017 the United
 States produced 4,282 TWh of electricity, and worldwide production was 25,551
 TWh&lt;/a&gt;.
 In other words, this process would consume &lt;strong&gt;56 times the current US electrical
@@ -202,7 +236,7 @@ gallon of gasoline produced, we’re still talking sci-fi levels of energy.&lt;/
 
 &lt;p&gt;If, somehow, we could produce that much energy to scale the process, what would
 we do with all the gasoline? Assuming the same 9.1 kg CO&lt;sub&gt;2&lt;/sub&gt; per gallon
-figure, converting 36 gigatonnes of CO&lt;sub&gt;2&lt;/sub&gt; would result in &lt;code class=&quot;highlighter-rouge&quot;&gt;4*10^12&lt;/code&gt;
+figure, converting 36 gigatonnes of CO&lt;sub&gt;2&lt;/sub&gt; would result in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4*10^12&lt;/code&gt;
 gallons of gasoline, or 3.6 cubic miles. That’s almost enough to fill &lt;a href=&quot;https://en.wikipedia.org/wiki/Seneca_Lake_(New_York)&quot;&gt;Seneca
 Lake&lt;/a&gt;. A cube of gasoline,
 1.53 miles on each side. Annually.&lt;/p&gt;
@@ -220,38 +254,38 @@ Lake&lt;/a&gt;. A cube of gasoline,
 
 &lt;p&gt;I &lt;em&gt;love&lt;/em&gt; Vim, but one thing that drove me crazy for a long time was
 search/replace. It’s easy to search for the current word under the cursor - just
-press &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; in normal mode to start cycling through matches. But replacing that
+press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt; in normal mode to start cycling through matches. But replacing that
 word can be annoying if it’s really long. You end up with a lot of keystrokes.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:%s/mySuperLongVariableName/myNewSuperLongVariableName/gc
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:%s/mySuperLongVariableName/myNewSuperLongVariableName/gc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;One way to save a few keystrokes is to yank &lt;code class=&quot;highlighter-rouge&quot;&gt;mySuperLongVariableName&lt;/code&gt; and paste
+&lt;p&gt;One way to save a few keystrokes is to yank &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mySuperLongVariableName&lt;/code&gt; and paste
 it into the search command. You can do this by yanking the text you want to
-replace (e.g. select in visual mode and press &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;), typing &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/&lt;/code&gt; to start the
-search, then pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-r&amp;gt;&lt;/code&gt; followed by &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; to paste the search text.&lt;/p&gt;
+replace (e.g. select in visual mode and press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;), typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:%s/&lt;/code&gt; to start the
+search, then pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;c-r&amp;gt;&lt;/code&gt; followed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&lt;/code&gt; to paste the search text.&lt;/p&gt;
 
 &lt;p&gt;But that’s still an annoying number of steps. I wrote the script below to start
-a search/replace command by simply pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt;. It grabs the current word
+a search/replace command by simply pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt;. It grabs the current word
 under the cursor and prompts for the rest of the replace command.  In other
-words, pressing &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt; eliminates need to type &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/mySuperLongVariableName/&lt;/code&gt;.
+words, pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;c-s&amp;gt;&lt;/code&gt; eliminates need to type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:%s/mySuperLongVariableName/&lt;/code&gt;.
 Just fill out the rest.&lt;/p&gt;
 
 &lt;div class=&quot;language-viml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; userInput &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; input&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':%s/\&amp;lt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; len&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;userInput&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-    exe &lt;span class=&quot;s1&quot;&gt;'%s/\&amp;lt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\&amp;gt;/'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; userInput
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;cword&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; userInput &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;:%s/\&amp;lt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;\&amp;gt;/&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;userInput&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+    exe &lt;span class=&quot;s1&quot;&gt;&apos;%s/\&amp;lt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; cword &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;\&amp;gt;/&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; userInput
   &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
-noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;s&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;noremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;s&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; SearchReplaceCurrentWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Update (2 May 2019): I ran into an issue with the original version of this
 script where I accidentally did a replace on a partial match. For instance, I
-tried to replace the word &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;barstool&lt;/code&gt;, but in doing so changed
-&lt;code class=&quot;highlighter-rouge&quot;&gt;barometric&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;barstoolometric&lt;/code&gt;. Wrapping the search term in &lt;code class=&quot;highlighter-rouge&quot;&gt;\&amp;lt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;\&amp;gt;&lt;/code&gt;
-instead (like &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;this\&amp;gt;/that&lt;/code&gt;) tells Vim to replace whole-word matches only.&lt;/p&gt;
+tried to replace the word &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bar&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;barstool&lt;/code&gt;, but in doing so changed
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;barometric&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;barstoolometric&lt;/code&gt;. Wrapping the search term in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\&amp;lt;&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\&amp;gt;&lt;/code&gt;
+instead (like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:%s/\&amp;lt;this\&amp;gt;/that&lt;/code&gt;) tells Vim to replace whole-word matches only.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Mar 2019 04:11:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
@@ -262,31 +296,31 @@ instead (like &lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;this\
         <title>Vimscript: auto-highlight matching words</title>
         <description>&lt;p&gt;&lt;img src=&quot;/images/toggle-highlight-480.gif&quot; alt=&quot;:q&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s a small script I cobbled together for my &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;. I use it every
-single day.  Press &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;c-h&amp;gt;&lt;/code&gt; to toggle auto-highlighting of matching words in
+&lt;p&gt;Here’s a small script I cobbled together for my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;. I use it every
+single day.  Press &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;c-h&amp;gt;&lt;/code&gt; to toggle auto-highlighting of matching words in
 normal mode.&lt;/p&gt;
 
 &lt;div class=&quot;language-viml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;exists&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#ToggleAutoHighlightMatchingWordGroup#CursorMoved'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    exe printf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'match IncSearch /\V\&amp;lt;%s\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;se&quot;&gt;      \&lt;/span&gt; escape&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;#ToggleAutoHighlightMatchingWordGroup#CursorMoved&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    exe &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;match IncSearch /\V\&amp;lt;%s\&amp;gt;/&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;      \&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;cword&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/\&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     augroup ToggleAutoHighlightMatchingWordGroup
       autocmd&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;
-      autocmd &lt;span class=&quot;nb&quot;&gt;CursorMoved&lt;/span&gt; * exe printf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'match IncSearch /\V\&amp;lt;%s\&amp;gt;/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;se&quot;&gt;            \&lt;/span&gt; escape&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;expand&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;cword&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      autocmd &lt;span class=&quot;nb&quot;&gt;CursorMoved&lt;/span&gt; * exe &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;match IncSearch /\V\&amp;lt;%s\&amp;gt;/&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;            \&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;escape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;cword&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/\&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     augroup END
   &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentTab &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagenr&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentWindow &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagewinnr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;currentTab&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    exe &lt;span class=&quot;s1&quot;&gt;'tabdo windo match IncSeach //'&lt;/span&gt;
-    exe currentTab &lt;span class=&quot;s1&quot;&gt;'tabn'&lt;/span&gt;
-    exe currentWindow &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'wincmd w'&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentTab &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabpagenr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; currentWindow &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabpagewinnr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;currentTab&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    exe &lt;span class=&quot;s1&quot;&gt;&apos;tabdo windo match IncSeach //&apos;&lt;/span&gt;
+    exe currentTab &lt;span class=&quot;s1&quot;&gt;&apos;tabn&apos;&lt;/span&gt;
+    exe currentWindow &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;wincmd w&apos;&lt;/span&gt;
     augroup ToggleAutoHighlightMatchingWordGroup
       autocmd&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;
     augroup END
   &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
-noremap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;noremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; ToggleAutoHighlightMatchingWord&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Mar 2019 07:00:00 -0400</pubDate>
@@ -308,20 +342,20 @@ to delete files. I could create and read files, but delete just didn’t work.&l
 
 &lt;p&gt;Here’s how the directory looked:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -lah / | grep scanner
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ls -lah / | grep scanner
 drwxrwxrwt   2 scanner scanner 4.0K Oct  7 18:52 scanner
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;At first I figured there was some sort of group permissions problem. But adding
-my user to the &lt;code class=&quot;highlighter-rouge&quot;&gt;scanner&lt;/code&gt; group didn’t solve it.&lt;/p&gt;
+my user to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scanner&lt;/code&gt; group didn’t solve it.&lt;/p&gt;
 
-&lt;p&gt;Turns out it was the &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt; - the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky
+&lt;p&gt;Turns out it was the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt; - the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sticky_bit&quot;&gt;sticky
 bit&lt;/a&gt;. This was preventing any user who
-wasn’t &lt;code class=&quot;highlighter-rouge&quot;&gt;scanner&lt;/code&gt; from deleting files in that directory.&lt;/p&gt;
+wasn’t &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scanner&lt;/code&gt; from deleting files in that directory.&lt;/p&gt;
 
 &lt;p&gt;Removing the sticky bit fixed the problem.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod -t /scanner
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod -t /scanner
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 </description>
@@ -339,7 +373,7 @@ of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 miss GitLab CI.) After the repositories were copied to Bitbucket, I had
 reshuffle my git remotes and active branches to point to Bitbucket:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote rename origin upstream
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote rename origin upstream
 $ git remote add origin &amp;lt;new-remote-ssh-url&amp;gt;
 $ git checkout master
 $ git branch --set-upstream-to origin/master
@@ -355,11 +389,11 @@ $ git branch --set-upstream-to origin/master
         <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal
 of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;You’re doing a &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt; and you hit some conflicts. You open an offending
+&lt;p&gt;You’re doing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git merge&lt;/code&gt; and you hit some conflicts. You open an offending
 file and make changes. But then you realize that you’ve made some &lt;em&gt;bad&lt;/em&gt; changes.
 How do you get back to the original merged (albeit conflicted) file?&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -m &amp;lt;file&amp;gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -m &amp;lt;file&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post.&lt;/p&gt;
@@ -377,13 +411,13 @@ of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Today I learned about &lt;a href=&quot;https://github.com/tomnomnom/gron&quot;&gt;gron&lt;/a&gt;, a command-line
 utilty that makes it easy to search JSON data.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
 json.characters[0].name = &quot;Big Bird&quot;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;It’s basically just printing each item in the object line-by-line.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json
 json = {};
 json.characters = [];
 json.characters[0] = {};
@@ -396,67 +430,12 @@ json.characters[1].name = &quot;Oscar the Grouch&quot;;
 
 &lt;p&gt;Super helpful, actually.&lt;/p&gt;
 
-&lt;p&gt;Installed with &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Installed with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
-      </item>
-    
-      <item>
-        <title>enumerate() and dict.items()</title>
-        <description>&lt;p&gt;&lt;em&gt;Updated 8 Mar 2019.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt; is a handy built-in Python function that sometimes gets overlooked.
-It’s not life-changing, but it makes things a little cleaner and more concise.&lt;/p&gt;
-
-&lt;p&gt;Let’s say you want to loop through a list, but you want to access both the list
-items &lt;em&gt;and&lt;/em&gt; the index value for each item. Here’s one way to do it:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;However, you can do the same thing a little more gracefully with &lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt; is similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;enumerate&lt;/code&gt;, but for dictionaries. If you were doing
-this…&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;…try this instead:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Python 3
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt; doesn’t exist in Python 2.7, but &lt;code class=&quot;highlighter-rouge&quot;&gt;iteritems&lt;/code&gt; does the same thing:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Python 2.7
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iteritems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Happy coding!&lt;/p&gt;
-</description>
-        <pubDate>Sun, 12 Jul 2015 11:39:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2015/07/12/enumerate/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/07/12/enumerate/</guid>
       </item>
     
   </channel>
