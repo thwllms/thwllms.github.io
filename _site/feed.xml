@@ -7,6 +7,92 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Default HEC-RAS Version</title>
+        <description>&lt;p&gt;This was driving me ever so slightly nuts for a little while.
+I’ve had &lt;a href=&quot;https://www.hec.usace.army.mil/software/hec-ras/&quot;&gt;HEC-RAS&lt;/a&gt;
+6.4.1 on my work laptop (Windows 10) and recently
+installed version 6.5, too. Previously I set my machine to open 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.prj&lt;/code&gt; files with HEC-RAS 6.4.1. I’ve been wanting them to open with version
+6.5 by default, but no matter what I did they were still opening with
+6.4.1.&lt;/p&gt;
+
+&lt;p&gt;I figured there was probably some system registry setting that
+would allow me to set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.prj&lt;/code&gt; files to open with HEC-RAS 6.5 instead.
+I’ve been leaning heavily on ChatGPT for technical issues like this
+to avoid digging through documentation and StackOverflow answers,
+and it didn’t disappoint.&lt;/p&gt;
+
+&lt;p&gt;Here are the instructions ChatGPT landed on after a couple rounds of
+back-and-forth…&lt;/p&gt;
+
+&lt;h3 id=&quot;step-by-step-instructions&quot;&gt;Step-by-Step Instructions:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Navigate to UserChoice Key:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Go to:
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.prj\UserChoice
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change the ProgId:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;In the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UserChoice&lt;/code&gt; key, find the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProgId&lt;/code&gt;. This tells Windows which application to use for opening &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.prj&lt;/code&gt; files.&lt;/li&gt;
+      &lt;li&gt;Since the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProgId&lt;/code&gt; is currently set to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prj_auto_file&lt;/code&gt;, you need to ensure that this is linked to the correct executable path in another part of the registry.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modify the Default Program in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prj_auto_file&lt;/code&gt;:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Go to:
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HKEY_CLASSES_ROOT\prj_auto_file\shell\open\command
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Check the default value here—it should be pointing to the executable for HEC-RAS. This is where you can specify the path to the new version of the application. If this key does not exist, you will need to create it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;create-or-modify-the-command-key&quot;&gt;Create or Modify the Command Key:&lt;/h3&gt;
+&lt;p&gt;If the path needs to be updated or created, follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Navigate or Create Keys:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Go to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HKEY_CLASSES_ROOT&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Look for a key named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prj_auto_file&lt;/code&gt;. If it doesn’t exist, you need to create it by right-clicking on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HKEY_CLASSES_ROOT&lt;/code&gt;, selecting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New &amp;gt; Key&lt;/code&gt;, and naming it &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prj_auto_file&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prj_auto_file&lt;/code&gt;, create a new key named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shell&lt;/code&gt; if it doesn’t exist.&lt;/li&gt;
+      &lt;li&gt;Inside &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shell&lt;/code&gt;, create another key named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;open&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;open&lt;/code&gt;, create a final key named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Set the Default Program:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;In the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command&lt;/code&gt; key, double-click the default value and change it to:
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;C:\Program Files (x86)\HEC\HEC-RAS\6.5\Ras.exe&quot; &quot;%1&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%1&lt;/code&gt; allows the program to receive the file as an argument.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;apply-changes-and-test&quot;&gt;Apply Changes and Test:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Close the Registry Editor.&lt;/li&gt;
+  &lt;li&gt;Restart your computer to ensure the changes take effect.&lt;/li&gt;
+  &lt;li&gt;Try opening a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.prj&lt;/code&gt; file to see if it opens with the correct version of HEC-RAS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;note&quot;&gt;Note:&lt;/h3&gt;
+&lt;p&gt;This is a sensitive process, as incorrect changes to the registry can cause applications or the system to behave unexpectedly. If you’re not comfortable doing this, it might be wise to consult with an IT professional or someone familiar with Windows system administration.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 29 May 2024 07:11:11 -0400</pubDate>
+        <link>http://localhost:4000/blog/2024/05/29/default-hecras-version/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/05/29/default-hecras-version/</guid>
+      </item>
+    
+      <item>
         <title>Making Space</title>
         <description>&lt;p&gt;My disk has been verging on 100% capacity for a long time. I’ve
 always known that the problem is Docker, but I finally got around
@@ -401,41 +487,6 @@ How do you get back to the original merged (albeit conflicted) file?&lt;/p&gt;
         <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
         <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
-      </item>
-    
-      <item>
-        <title>TIL: gron</title>
-        <description>&lt;p&gt;&lt;em&gt;Retroactively published on 8 Mar 2019. A while ago I started keeping a journal
-of TILs, and I’ve decided to share some of them.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Today I learned about &lt;a href=&quot;https://github.com/tomnomnom/gron&quot;&gt;gron&lt;/a&gt;, a command-line
-utilty that makes it easy to search JSON data.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json | grep -i &quot;big bird&quot;
-json.characters[0].name = &quot;Big Bird&quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It’s basically just printing each item in the object line-by-line.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gron mydata.json
-json = {};
-json.characters = [];
-json.characters[0] = {};
-json.characters[0].location = &quot;Sesame Street&quot;;
-json.characters[0].name = &quot;Big Bird&quot;;
-json.characters[1] = {};
-json.characters[1].location = &quot;Sesame Street&quot;;
-json.characters[1].name = &quot;Oscar the Grouch&quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Super helpful, actually.&lt;/p&gt;
-
-&lt;p&gt;Installed with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install gron&lt;/code&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 02 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/04/02/til-gron/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/02/til-gron/</guid>
       </item>
     
   </channel>
