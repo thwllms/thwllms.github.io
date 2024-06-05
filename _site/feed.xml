@@ -3,8 +3,8 @@
   <channel>
     <title>thwllms</title>
     <description>thwllms&apos; personal blog.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://www.thwllms.com/</link>
+    <atom:link href="http://www.thwllms.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Default HEC-RAS Version</title>
@@ -88,8 +88,8 @@ back-and-forth…&lt;/p&gt;
 &lt;p&gt;This is a sensitive process, as incorrect changes to the registry can cause applications or the system to behave unexpectedly. If you’re not comfortable doing this, it might be wise to consult with an IT professional or someone familiar with Windows system administration.&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 May 2024 07:11:11 -0400</pubDate>
-        <link>http://localhost:4000/blog/2024/05/29/default-hecras-version/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2024/05/29/default-hecras-version/</guid>
+        <link>http://www.thwllms.com/blog/2024/05/29/default-hecras-version/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2024/05/29/default-hecras-version/</guid>
       </item>
     
       <item>
@@ -122,8 +122,8 @@ command line:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 27 Mar 2023 07:11:11 -0400</pubDate>
-        <link>http://localhost:4000/blog/2023/03/27/making-space/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2023/03/27/making-space/</guid>
+        <link>http://www.thwllms.com/blog/2023/03/27/making-space/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2023/03/27/making-space/</guid>
       </item>
     
       <item>
@@ -206,8 +206,8 @@ bootloader mode&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Sun, 07 Jul 2019 10:22:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/07/07/keyboard-controller/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/07/07/keyboard-controller/</guid>
+        <link>http://www.thwllms.com/blog/2019/07/07/keyboard-controller/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/07/07/keyboard-controller/</guid>
       </item>
     
       <item>
@@ -246,8 +246,8 @@ definitely overkill, but whatever. So… here it is:
 there.&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Jun 2019 05:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/06/24/whats-the-toll/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/06/24/whats-the-toll/</guid>
+        <link>http://www.thwllms.com/blog/2019/06/24/whats-the-toll/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/06/24/whats-the-toll/</guid>
       </item>
     
       <item>
@@ -330,8 +330,8 @@ Lake&lt;/a&gt;. A cube of gasoline,
 &lt;p&gt;Oof. Hopefully I’m off… by many orders of magnitude.&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 May 2019 18:20:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/05/21/prometheus-hackernews-climate-change/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/05/21/prometheus-hackernews-climate-change/</guid>
+        <link>http://www.thwllms.com/blog/2019/05/21/prometheus-hackernews-climate-change/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/05/21/prometheus-hackernews-climate-change/</guid>
       </item>
     
       <item>
@@ -374,8 +374,8 @@ tried to replace the word &lt;code class=&quot;language-plaintext highlighter-ro
 instead (like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:%s/\&amp;lt;this\&amp;gt;/that&lt;/code&gt;) tells Vim to replace whole-word matches only.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Mar 2019 04:11:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/18/vimscript-search-replace-shortcut/</guid>
+        <link>http://www.thwllms.com/blog/2019/03/18/vimscript-search-replace-shortcut/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/03/18/vimscript-search-replace-shortcut/</guid>
       </item>
     
       <item>
@@ -410,8 +410,8 @@ normal mode.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Mar 2019 07:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019/03/10/vimscript-highlight-cword/</guid>
+        <link>http://www.thwllms.com/blog/2019/03/10/vimscript-highlight-cword/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2019/03/10/vimscript-highlight-cword/</guid>
       </item>
     
       <item>
@@ -446,8 +446,8 @@ wasn’t &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scan
 
 </description>
         <pubDate>Sun, 07 Oct 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/10/07/til-sticky-bit/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/10/07/til-sticky-bit/</guid>
+        <link>http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/10/07/til-sticky-bit/</guid>
       </item>
     
       <item>
@@ -466,8 +466,8 @@ $ git branch --set-upstream-to origin/master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 01 Aug 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/08/01/til-changing-git-remotes/</guid>
+        <link>http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/08/01/til-changing-git-remotes/</guid>
       </item>
     
       <item>
@@ -485,8 +485,8 @@ How do you get back to the original merged (albeit conflicted) file?&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;https://gitster.livejournal.com/43665.html&quot;&gt;this&lt;/a&gt; post.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Apr 2018 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018/04/03/til-git-checkout-m/</guid>
+        <link>http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</link>
+        <guid isPermaLink="true">http://www.thwllms.com/blog/2018/04/03/til-git-checkout-m/</guid>
       </item>
     
   </channel>
